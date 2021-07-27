@@ -1,0 +1,120 @@
+body{
+    background-color: antiquewhite;
+}
+
+.loginHeaders{
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+}
+
+input{
+    padding: 5px 50px 5px 5px;
+}
+
+button,.a_button{
+    font-family: Arial, Helvetica, sans-serif;
+    border-style: none;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px 20px;
+    background-color: rgb(243, 204, 154);
+    display: inline-block;
+    
+}
+
+button:hover,.a_button:hover{
+    background-color: rgb(240, 179, 99);
+}
+
+.credentials{
+    display: block;
+    margin-top: 30px;
+}
+
+h1,invalid_credential{
+    display: flex;
+    justify-content: center;
+}
+
+.login_form{
+    width: fit-content;
+    border-style: groove;
+    display: grid;
+    padding: 50px;
+    justify-content: center;
+}
+
+.header{
+    list-style: none;
+    display: flex;
+    background-color: burlywood;
+}
+
+li{
+    padding: 20px;
+    color:black;
+}
+
+li:hover{
+    background-color: rgb(250, 201, 142);
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.details{
+    margin-top: 30px;
+    background-color: #DEB887;
+}
+
+.details_header{
+    padding: 10px 0px 10px 20px;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.details_para{
+    padding: 10px 0px 10px 20px;
+}
+
+.para{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.innerPara{
+    display: inline-block;
+    font-size: 20px;
+}
+
+.left{
+    font-weight: bold;
+}
+
+.right{
+    font-family: monospace;
+}
+
+select{
+    outline-style: none;
+}
+
+table{
+    overflow-x: scroll;
+}
+
+th,td{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
