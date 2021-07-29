@@ -25,12 +25,12 @@ public class AdminVerify extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		String user,username,password,pass,url;
 		PrintWriter out = response.getWriter();
-		url = "jdbc:mysql://localhost/e-learning";
-    	username = "root";
-    	password = "";
-        user = request.getParameter("username");
-        pass = request.getParameter("password");
         try{
+        	url = "jdbc:mysql://localhost/e-learning";
+        	username = "root";
+        	password = "";
+        	user = request.getParameter("username");
+        	pass = request.getParameter("password");
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(url,username,password);
             PreparedStatement pes = con.prepareStatement("select * from admin where email=? and password=?");
@@ -43,14 +43,12 @@ public class AdminVerify extends HttpServlet {
                 response.addCookie(ck);
                 response.sendRedirect("adminHomePage.jsp");
             }else{
-                request.setAttribute("error", "error");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-                response.sendRedirect("error.jsp");
+            	out.println("<center>Incorrect Username/Password</center>");
+                request.getRequestDispatcher("adminIndex.html").include(request, response);
             }
         }catch(Exception e){
-        	request.setAttribute("exception", e);
-        	request.getRequestDispatcher("exception.jsp").forward(request, response);
-            response.sendRedirect("exception.jsp");
+        	request.setAttribute("message", e.getLocalizedMessage());
+			request.getRequestDispatcher("exception.jsp").forward(request, response);
         }
 	}
 	

@@ -6,9 +6,17 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="form">
-        <form action="AddCourse" method="GET" class="login_form">
-            <h1 class="details_header">Add Course</h1>
+	<h2>Add Course</h2>
+    <div class="header">
+        <li>
+            <a href="adminHomePage.jsp">Homepage</a>
+        </li>
+        <li>
+        	<a href="adminLogout.jsp">Logout</a>
+        </li>
+    </div>
+	<div style="padding-top: 20px;">
+        <form action="AddCourse" method="GET">
             <table>
                 <tr>
                     <td class="innerPara left">Course Id</td>
@@ -20,11 +28,11 @@
                 </tr>
                 <tr>
                     <td class="innerPara left">Course Description</td>
-                    <td><input type="text" name="c_desc" style="height: 50px;"></td>
+                    <td><textarea name="c_desc" cols="50" rows="5"></textarea></td>
                 </tr>
                 <tr>
                     <td class="innerPara left">Course Fees</td>
-                    <td><input type="text" name="c_fees"></td>
+                    <td><input type="number" name="c_fees"></td>
                 </tr>
                 <tr>
                     <td class="innerPara left">Course Resources</td>

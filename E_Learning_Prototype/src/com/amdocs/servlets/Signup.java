@@ -33,19 +33,19 @@ public class Signup extends HttpServlet {
 		String name,email,password,address;
 		Date reg_date;
 		long phone_number,millis;
-		name = request.getParameter("name");
-		email = request.getParameter("email");
-		password = request.getParameter("password");
-		address = request.getParameter("address");
-		phone_number = Long.parseLong(request.getParameter("phnumber"));
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		millis = System.currentTimeMillis();
-		reg_date = new Date(millis);
-		String user,pass,url;
-		user = "root";
-		pass = "";
-		url = "jdbc:mysql://localhost/e-learning";
 		try{
+			name = request.getParameter("name");
+			email = request.getParameter("email");
+			password = request.getParameter("password");
+			address = request.getParameter("address");
+			phone_number = Long.parseLong(request.getParameter("phnumber"));
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+			millis = System.currentTimeMillis();
+			reg_date = new Date(millis);
+			String user,pass,url;
+			user = "root";
+			pass = "";
+			url = "jdbc:mysql://localhost/e-learning";
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url,user,pass);
             PreparedStatement pes = con.prepareStatement("INSERT INTO `test_user` (`user_id`, `name`, `phone_no`, `email`, `address`, `reg_date`, `password`) VALUES (NULL, ?, ?, ?, ?, ?, ?);");
@@ -56,9 +56,10 @@ public class Signup extends HttpServlet {
             pes.setDate(5, reg_date);
             pes.setString(6, password);
             pes.executeUpdate();
-            response.sendRedirect("index.html");
+            response.sendRedirect("userIndex.html");
 		}catch(Exception E){
-			System.out.println("Exception: "+E);
+			request.setAttribute("message", E.getLocalizedMessage());
+			request.getRequestDispatcher("exception.jsp").forward(request, response);
 		}
 	}
 

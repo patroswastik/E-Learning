@@ -13,26 +13,25 @@
             <table>
                 <tr>
                     <td class="innerPara left">Name:</td>
-                    <td><input type="text" name="name"></td>
+                    <td><input type="text" name="name" maxlength="100" pattern="/[A-Za-z]/gm"></td>
                 </tr>
                 <tr>
                     <td class="innerPara left">E mail:</td>
-                    <td><input type="email" name="email"></td>
+                    <td><input type="email" name="email" maxlength="100"></td>
                 </tr>
                 <tr>
                     <td class="innerPara left">Password:</td>
-                    <td><input type="password" name="password"></td>
+                    <td><input type="password" name="password" minlength="6" maxlength="15"></td>
                 </tr>
                 <tr>
                     <td class="innerPara left">Phone:</td>
-                        <td><input type="number" name="phnumber"></td>
+                        <td><input type="tel" name="phnumber" minlength="10" maxlength="10"></td>
                 </tr>
                 <tr>
                     <td class="innerPara left">Address:</td>
-                    <td><input type="text" name="address" style="height: 50px;"></td>
+                    <td><textarea name="address" id="address" cols="50" rows="5"></textarea></td>
                 </tr>
             </table>
-            
             <button type="submit">Sign Up</button>
         </form>
     </div>

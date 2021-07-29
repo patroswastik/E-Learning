@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class UserVerify
- */
 @WebServlet("/UserVerify")
 public class UserVerify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,24 +21,21 @@ public class UserVerify extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		String user,username,password,pass,url;
 		PrintWriter out = response.getWriter();
-		url = "jdbc:mysql://localhost/e-learning";
-    	username = "root";
-    	password = "";
-        user = request.getParameter("username");
-        pass = request.getParameter("password");
-        try{
+		try{
+			url = "jdbc:mysql://localhost/e-learning";
+	    	username = "root";
+	    	password = "";
+	        user = request.getParameter("username");
+	        pass = request.getParameter("password");
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(url,username,password);
-            PreparedStatement pes = con.prepareStatement("select * from user where email=? and password=?");
+            PreparedStatement pes = con.prepareStatement("select * from test_user where email=? and password=?");
             pes.setString(1, user);
             pes.setString(2, pass);
             ResultSet res = pes.executeQuery();
@@ -51,14 +45,12 @@ public class UserVerify extends HttpServlet {
                 response.addCookie(ck);
                 response.sendRedirect("userHomePage.jsp");
             }else{
-                request.setAttribute("error", "error");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-                response.sendRedirect("error.jsp");
+            	out.println("<center>Incorrect Username/Password</center>");
+                request.getRequestDispatcher("userIndex.html").include(request, response);
             }
         }catch(Exception e){
-        	request.setAttribute("exception", e);
-        	request.getRequestDispatcher("error.jsp").forward(request, response);
-            response.sendRedirect("error.jsp");
+        	request.setAttribute("message", e.getLocalizedMessage());
+        	request.getRequestDispatcher("exception.jsp").forward(request, response);
         }
 	}
 

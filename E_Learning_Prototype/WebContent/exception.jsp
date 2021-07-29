@@ -2,9 +2,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Exception</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Exception</h1>
+	<script>
+	function goBack() {
+		window.history.back();
+	}
+	</script>
+	<%! String message; %>
+	<% message = (String)request.getAttribute("message"); %>
+	<h1>Exception: <%=message %></h1>
+	<button onclick="goBack()">Go Back</button>
 </body>
 </html>

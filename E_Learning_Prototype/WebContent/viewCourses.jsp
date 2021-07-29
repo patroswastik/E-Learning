@@ -5,26 +5,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Enrolled Courses</title>
+<title>View Courses</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h2>Enrolled Courses</h2>
+	<h2>View Courses</h2>
     <div class="header">
-        <li><a href="userHomePage.jsp">Your Profile</a></li>
-        <li><a href="userLogout.jsp">Logout</a></li>
+        <li>
+            <a href="adminHomePage.jsp">Your Homepage</a>
+        </li>
+        <li>
+            <a href="adminLogout.jsp">Logout</a>
+        </li>
     </div>
     <div class="details">
         <div class="details_header">
-            Enrolled Courses
+            Courses
         </div>
         <table>
             <tr>
-                <th>Id</th>
+                <th>Course Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Fees</th>
-                <th>Resources</th>
+                <th>Resource</th>
             </tr>
             <%! String id,name,desc,fees,resources; %>
             <%! String url,user,pass; %>
@@ -39,13 +43,12 @@
 	        		}
 	        	}
 	        	try{
-	        		url = "jdbc:mysql://localhost/e-learning";
-	            	user = "root";
-	            	pass = "";
+		            url = "jdbc:mysql://localhost/e-learning";
+		        	user = "root";
+		        	pass = "";
 	        		Class.forName("com.mysql.jdbc.Driver");
 	        		Connection con = DriverManager.getConnection(url, user, pass);
-	        		PreparedStatement pes = con.prepareStatement("SELECT test_course.course_id,test_course.c_name,test_course.c_desp,test_course.c_fees,test_course.c_resource FROM user,user_courses,test_course where user.user_id = ? and user.user_id = user_courses.user_id and test_course.course_id = user_courses.course_id");
-	        		pes.setInt(1, user_id);
+	        		PreparedStatement pes = con.prepareStatement("select * from test_course");
 	        		ResultSet res = pes.executeQuery();
 	        		if(res.next()){
 	        			res.beforeFirst();

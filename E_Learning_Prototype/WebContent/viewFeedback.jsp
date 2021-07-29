@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>View Feedbacks</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
             <a href="adminHomePage.jsp">Homepage</a>
         </li>
         <li>
-            <a href="logout.jsp">Logout</a>
+            <a href="adminLogout.jsp">Logout</a>
         </li>
     </div>
     <div class="details">
@@ -31,38 +31,45 @@
                 <th>Email</th>
                 <th>Feedback</th>
             </tr>
+            <%! int time = 0; %>
             <%! String name,email,user_id,fid,feedback; %>
             <%! String url,user,pass; %>
             <%
-            url = "jdbc:mysql://localhost/e-learning";
-        	user = "root";
-        	pass = "";
-        	try{
-        		Class.forName("com.mysql.jdbc.Driver");
-        		Connection con = DriverManager.getConnection(url,user,pass);
-        		Statement stmt = con.createStatement();
-        		ResultSet res = stmt.executeQuery("select * from test_feedback");
-        		while(res.next()){
-        			name = res.getString("name");
-        			email = res.getString("email");
-        			user_id = res.getString("user_id");
-        			fid = res.getString("f_id");
-        			feedback = res.getString("feedback");
-        	%>
-        		<tr>
-        			<td><%=fid %></td>
-        			<td><%=name %></td>
-        			<td><%=email %></td>
-        			<td><%=user_id %></td>
-        			<td><%=feedback %></td>
-        		</tr>
-        	<%
-        		}
-        		stmt.close();
-        		con.close();
-        	}catch(Exception E){
-        		System.out.println(E);
-        	}
+            Cookie ck[] = request.getCookies();
+            if(ck != null){
+	        	try{
+		            url = "jdbc:mysql://localhost/e-learning";
+		        	user = "root";
+		        	pass = "";
+	        		Class.forName("com.mysql.jdbc.Driver");
+	        		Connection con = DriverManager.getConnection(url,user,pass);
+	        		Statement stmt = con.createStatement();
+	        		ResultSet res = stmt.executeQuery("select * from test_feedback");
+	        		while(res.next()){
+	        			name = res.getString("name");
+	        			email = res.getString("email");
+	        			user_id = res.getString("user_id");
+	        			fid = res.getString("f_id");
+	        			feedback = res.getString("feedback");
+	        	%>
+	        		<tr>
+	        			<td><%=fid %></td>
+	        			<td><%=name %></td>
+	        			<td><%=email %></td>
+	        			<td><%=user_id %></td>
+	        			<td><%=feedback %></td>
+	        		</tr>
+	        	<%
+	        		}
+	        		stmt.close();
+	        		con.close();
+	        	}catch(Exception E){
+	        		request.setAttribute("message", E.getLocalizedMessage());
+	        		request.getRequestDispatcher("exception.jsp").forward(request,response);
+	        	}
+            }else{
+            	response.sendRedirect("adminIndex.html");
+            }
             %>
         </table>
     </div>

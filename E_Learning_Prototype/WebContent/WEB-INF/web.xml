@@ -9,4 +9,52 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+  	<servlet-name>AddCourse</servlet-name>
+  	<servlet-class>com.amdocsc.servlets.AddCourse</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddFeedback</servlet-name>
+  	<servlet-class>com.amdocsc.servlets.AddFeedback</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AdminVerify</servlet-name>
+  	<servlet-class>com.amdocsc.servlets.AdminVerify</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Book</servlet-name>
+  	<servlet-class>com.amdocsc.servlets.Book</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Signup</servlet-name>
+  	<servlet-class>com.amdocsc.servlets.Signup</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserVerify</servlet-name>
+  	<servlet-class>com.amdocsc.servlets.UserVerify</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddCourse</servlet-name>
+  	<url-pattern>/add_course</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddFeedback</servlet-name>
+  	<url-pattern>/add_feedback</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminVerify</servlet-name>
+  	<url-pattern>/admin_verify</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Book</servlet-name>
+  	<url-pattern>/book</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Signup</servlet-name>
+  	<url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserVerify</servlet-name>
+  	<url-pattern>/user_verify</url-pattern>
+  </servlet-mapping>
 </web-app>
